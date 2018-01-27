@@ -5,11 +5,12 @@ client.on('ready', () => {
     console.log('I am ready!');
 });
 
-client.on('message', message => {
-    if (message.content === 'ping') {
-    	message.reply('pong');
-  	}
+client.on("message", message => {
+      if (message.content === "-ping") {
+      const embed = new Discord.RichEmbed()
+  .setColor("RANDOM")
+  .addField('**Ping:**' , `${Date.now() - message.createdTimestamp}` + ' ms')
+  message.channel.sendEmbed(embed);
+    }
 });
-
-// THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);
